@@ -16,5 +16,41 @@ def sluggish_octopus(fish_arr)
   longest_fish
 end
 
-# fish = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
+# Find the longest fish in O(n log n) time.
+# Note Merge Sort is O(n log n) -- let us sort the array and return last element
+
+# STACK TRACE TOO DEEP -- need to modify
+def dominant_octopus(fish_arr)
+  merge_sort(fish_arr).last
+end
+
+def merge_sort(array, &prc)
+  prc ||= Proc.new { |x, y| x <=> y }
+
+  mid = array.length / 2
+  left = merge_sort(array.take(mid), &prc)
+  right = merge_sort(array.drop(mid), &prc)
+
+  merge(left, right, &prc)
+end
+
+def merge(left, right, &prc)
+  merged = []
+
+  until left.empty? || right.empty?
+    case prc.call(left.first, right.first)
+    when 0, -1
+      merged << left.shift
+    when 1
+      merged << right.shift
+    end
+  end
+
+    merged + left + right
+end
+
+
+
+fish = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
+# p dominant_octopus(fish)
 # # => "fiiiissshhhhhh"
