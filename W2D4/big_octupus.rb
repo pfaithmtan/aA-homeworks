@@ -19,12 +19,13 @@ end
 # Find the longest fish in O(n log n) time.
 # Note Merge Sort is O(n log n) -- let us sort the array and return last element
 
-# STACK TRACE TOO DEEP -- need to modify
 def dominant_octopus(fish_arr)
   merge_sort(fish_arr).last
 end
 
 def merge_sort(array, &prc)
+  return array if array.length <= 1
+
   prc ||= Proc.new { |x, y| x <=> y }
 
   mid = array.length / 2
@@ -38,7 +39,7 @@ def merge(left, right, &prc)
   merged = []
 
   until left.empty? || right.empty?
-    case prc.call(left.first, right.first)
+    case prc.call(left.first.length, right.first.length)
     when 0, -1
       merged << left.shift
     when 1
