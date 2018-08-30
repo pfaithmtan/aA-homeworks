@@ -49,8 +49,17 @@ def merge(left, right, &prc)
     merged + left + right
 end
 
+def clever_octopus(fish_arr)
+  longest_fish = fish_arr[0] #starting with first element
 
+  (1...fish_arr.length).each do |i|
+    if longest_fish.length < fish_arr[i].length
+      longest_fish = fish_arr[i]
+    end
+  end
 
-fish = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
-# p dominant_octopus(fish)
+  longest_fish
+end
+
+# fish = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
 # # => "fiiiissshhhhhh"
