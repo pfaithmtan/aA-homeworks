@@ -63,3 +63,5 @@ end
 
 # fish = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
 # # => "fiiiissshhhhhh"
+
+# Dancing Octopus: Slow Dance, Constant Dance -- Not implemented
